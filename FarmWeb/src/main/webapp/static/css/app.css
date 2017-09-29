@@ -1,0 +1,60 @@
+body, #mainWrapper {
+	height: 100%;
+	background-color:rgb(245, 245, 245);
+}
+
+body, .form-control{
+	font-size:12px!important;
+}
+
+.floatRight{
+	float:right;
+	margin-right: 18px;
+}
+.validInput {
+    background-color: #e9ffe9;
+}
+.invalidInput {
+    background-color: #d39292;
+    color: white;
+}
+.has-error{
+	color:red;
+}
+
+.generic-container {
+  position:relative;
+  width:80%;
+  max-width:600px;
+  padding: 20px;
+  background-color: #EAE7E7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 30px black;
+  margin:auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align:center;
+  transition:all 0.5s linear;
+}
+.generic-container:hover {
+    box-shadow: 5px 5px 50px black;
+}
+
+.lead button{
+	margin-left:15px;
+}
+.generic-container > a{
+	font-size:26px;
+	font-weight:700;
+}
+.generic-container > a:hover{
+	text-decoration:none !important;
+}
+.custom-width {
+    width: 80px !important;
+}
+
+.form-horizontal .control-label{
+	text-align:left !important;
+}
