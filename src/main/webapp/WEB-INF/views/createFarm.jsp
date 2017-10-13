@@ -85,37 +85,37 @@
 					<div style="display: table; min-width: 350px">
 						<label class="col-md-12 control-label" for="address"
 							style="float: left; max-width: 350px;">Animal</label>
-						
+
 					</div>
-					
+
 					<div class="col-lg-12">
-							<select id="animalType" style="float: left;">
-								<c:forEach items="${animalTypes}" var="animalTypes">
-									<option value="${animalTypes.name}">${animalTypes.name}</option>
-								</c:forEach>
-							</select>
-						</div>
-						<div class="col-lg-5">
-							<select id="foodType" style="float: left;">
-								<c:forEach items="${foodTypes}" var="foodTypes">
-									<option value="${foodTypes.name}">${foodTypes.name}</option>
-								</c:forEach>
-							</select>
-						</div>
-						<div class="col-lg-5">
-							<form:input placeholder="QTY" type="number" path="foodEated"
-								id="foodEated" class="form-control input-sm" />
-						</div>
-						<div class="col-lg-2">
-							<a class="btn btn-primary btn-sm " id="addFoodAnimal"
-								style="float: left; margin-left: 15px;">ADD</a>
-						</div>
+						<select id="animalType" style="float: left;">
+							<c:forEach items="${animalTypes}" var="animalTypes">
+								<option value="${animalTypes.name}">${animalTypes.name}</option>
+							</c:forEach>
+						</select>
 					</div>
-					<div class="col-lg-12" id="animalDataTable">
-					<%@include file="animalTables.jsp" %>
+					<div class="col-lg-5">
+						<select id="foodType" style="float: left;">
+							<c:forEach items="${foodTypes}" var="foodTypes">
+								<option value="${foodTypes.name}">${foodTypes.name}</option>
+							</c:forEach>
+						</select>
 					</div>
-					
-					<!-- <div class="col-lg-12">
+					<div class="col-lg-5">
+						<form:input placeholder="QTY" type="number" path="foodEated"
+							id="foodEated" class="form-control input-sm" />
+					</div>
+					<div class="col-lg-2">
+						<a class="btn btn-primary btn-sm " id="addFoodAnimal"
+							style="float: left; margin-left: 15px;">ADD</a>
+					</div>
+				</div>
+				<div class="col-lg-12" id="animalDataTable">
+					<%@include file="animalTables.jsp"%>
+				</div>
+
+				<!-- <div class="col-lg-12">
 					<a class="btn btn-primary btn-sm " id="addForm"
 								style="float: left; margin-left: 15px;">ADD</a>
 					</div> -->
@@ -124,17 +124,8 @@
 		</form:form>
 		<div class="row">
 			<div class="form-actions floatRight">
-				<c:choose>
-					<c:when test="${edit}">
-						<a class="btn btn-primary btn-sm" href="<c:url value='/list' />">Cancel</a>
-						<input type="submit" value="Update" class="btn btn-primary btn-sm" />
-					</c:when>
-					<c:otherwise>
-						<a class="btn btn-primary btn-sm" href="<c:url value='/list' />">Cancel</a>
-						<a id="saveFarm" 
-							class="btn btn-primary btn-sm" >Register</a>
-					</c:otherwise>
-				</c:choose>
+				<a class="btn btn-primary btn-sm" href="<c:url value='/list' />">Cancel</a>
+				<a id="saveFarm" class="btn btn-primary btn-sm">Register</a>
 			</div>
 		</div>
 

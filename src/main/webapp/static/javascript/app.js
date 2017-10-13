@@ -130,6 +130,28 @@ function toggleFarmerForm(data) {
 	console.log("End of toggleFarmerForm(data)");
 }
 
+
+//Get report
+$(document).on("click","#generateReport",function(){
+	console.log("Begin of $(document).on('click','#generateReport'");
+	var farmAddress = $("#address").val();
+	$.ajax({
+		url : defaultPath + "/GenerateReport/"+farmAddress,
+		success : function(data) {
+			if(data == "valid"){
+				console.log("Report generated successfully");
+				//load report
+				$("#reportTables").load(defaultPath+"/GetReportTable");
+				toggleReport("show");
+			}else{
+				console.log("Report not generated ");
+				toggleReport("hide");
+			}
+		},
+	});
+	console.log("End of $(document).on('click','#generateReport'");
+});
+
 // Remove class on change
 $(document).on(
 		"change",
@@ -141,6 +163,7 @@ $(document).on(
 			if ($(this).attr("name") == "address") {
 				toggleFarmerForm("hide");
 				toggleAnimalForm("hide");
+				toggleReport("hide");
 			} else if ($(this).attr("name") == "name"
 					|| $(this).attr("name") == "age") {
 				toggleAnimalForm("hide");
@@ -159,12 +182,39 @@ $(document).on("click", "#saveFarm", function() {
 	});
 	console.log("End of $(document).on('click', '#saveFarm'");
 });
+
+//Register farm
+$(document).on("click", "#updateFarm", function() {
+	console.log("Begin of $(document).on('click', '#updateFarm'");
+	$.ajax({
+		url : defaultPath + "/UpdateLocalFarm",
+		success : function(data) {
+			console.log(data);
+			window.location.href = defaultPath + '/';
+		},
+	});
+	console.log("End of $(document).on('click', '#updateFarm'");
+});
+
 $(document).ready(function() {
 	console.log("Begin of $(document).ready");
+	
 	toggleFarmerForm("hide");
 	toggleAnimalForm("hide");
+	toggleReport("hide");
 	console.log("End of $(document).ready");
-})
+});
+
+function toggleReport(action) {
+	console.log("Begin of toggleReport(action)");
+	if (action == "show") {
+		$("#reportSection").show();
+	} else {
+		$("#reportSection").hide();
+	}
+	console.log("Begin of toggleReport(action)");
+}
+
 function toggleAnimalForm(action) {
 	console.log("Begin of toggleAnimalForm(action)");
 	if (action == "show") {

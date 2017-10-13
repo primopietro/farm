@@ -11,9 +11,16 @@ import com.cgi.farm.dao.IAbstractDao;
 import com.cgi.farm.dao.IFoodDao;
 import com.cgi.farm.model.Food;
 
+
+/**
+ * The Class FoodDaoImpl.
+ */
 @Repository("foodDao")
 public class FoodDaoImpl extends IAbstractDao<String, Food> implements IFoodDao {
 
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IFoodDao#findAll()
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Food> findAll() {
@@ -21,6 +28,9 @@ public class FoodDaoImpl extends IAbstractDao<String, Food> implements IFoodDao 
 		return (List<Food>)crit.list();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IFoodDao#findByID(int)
+	 */
 	@Override
 	public Food findByID(int ID) {
 		Criteria crit = createEntityCriteria();
@@ -28,6 +38,9 @@ public class FoodDaoImpl extends IAbstractDao<String, Food> implements IFoodDao 
 		return (Food) crit.uniqueResult();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IFoodDao#save(com.cgi.farm.model.Food)
+	 */
 	public void save(Food aFood){
 		persist(aFood);
 	}

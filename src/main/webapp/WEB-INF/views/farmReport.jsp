@@ -24,35 +24,30 @@
 					<div style="display: table; min-width: 350px">
 
 						<label class="col-md-12 control-label" for="address"
-							style="float: left; max-width: 350px;">Find Farm By</label>
+							style="float: left; max-width: 350px;">Generate Report</label>
 						<div class="col-md-11">
 
-							<input id="searchFarmer" type="radio" name="searchType"
-								style="float: left;" value="Farmer"><span
-								style="float: left;"> Farmer</span> <br> <input
-								id="searchFarm" type="radio" name="searchType"
-								style="float: left;" value="Farm"> <span
-								style="float: left;"> Farm</span>
-							<form:input placeholder="Value" type="text" path="address"
+							<form:input placeholder="Farm address" type="text" path="address"
 								id="address" class="form-control input-sm" />
-
 
 						</div>
 						<div class=" col-md-1">
-							<a class="btn btn-primary btn-sm " id="confirmSearchType"
-								style="float: left; margin-left: 15px;">Search</a>
+							<a class="btn btn-primary btn-sm " id="generateReport"
+								style="float: left; margin-left: 15px;">Generate</a>
 						</div>
 					</div>
 				</div>
 
 			</div>
 		</form:form>
-		<div id="foodTables"></div>
+		<div id="reportSection">
+			<div id="reportTables">
+			</div>
+		</div>
 
 		<div class="row">
 			<div class="form-actions floatRight">
 				<a class="btn btn-primary btn-sm" href="<c:url value='/list' />">Cancel</a>
-				<a id="updateFarm" class="btn btn-primary btn-sm">Register</a>
 			</div>
 		</div>
 

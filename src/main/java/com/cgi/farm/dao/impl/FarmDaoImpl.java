@@ -10,9 +10,16 @@ import com.cgi.farm.dao.IAbstractDao;
 import com.cgi.farm.dao.IFarmDao;
 import com.cgi.farm.model.Farm;
 
+
+/**
+ * The Class FarmDaoImpl.
+ */
 @Repository("farmDao")
 public class FarmDaoImpl extends IAbstractDao<String, Farm> implements IFarmDao {
 
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IFarmDao#findAll()
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Farm> findAll() {
@@ -20,6 +27,9 @@ public class FarmDaoImpl extends IAbstractDao<String, Farm> implements IFarmDao 
 		return (List<Farm>) crit.list();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IFarmDao#findFarmerName(java.lang.String)
+	 */
 	@Override
 	public Farm findFarmerName(String name) {
 		Criteria crit = createEntityCriteria();
@@ -27,6 +37,9 @@ public class FarmDaoImpl extends IAbstractDao<String, Farm> implements IFarmDao 
 		return (Farm) crit.uniqueResult();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IFarmDao#findByAddress(java.lang.String)
+	 */
 	@Override
 	public Farm findByAddress(String address) {
 		Criteria crit = createEntityCriteria();
@@ -34,6 +47,9 @@ public class FarmDaoImpl extends IAbstractDao<String, Farm> implements IFarmDao 
 		return (Farm) crit.uniqueResult();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IFarmDao#save(com.cgi.farm.model.Farm)
+	 */
 	public void save(Farm aFarm) {
 		persist(aFarm);
 	}

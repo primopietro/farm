@@ -12,18 +12,25 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * The Class Farm.
+ */
 @Entity
 @Table(name = "farm")
 public class Farm {
+	
+	/** The address. */
 	@Id
 	@Column(name = "address", nullable = false)
 	private String address;
 
+	/** The farmer. */
 	@OneToOne (cascade= CascadeType.ALL )
 	@JoinColumn(name = "farmer_name")
 	private Farmer farmer;
 
 
+	/** The animal list. */
 	@JoinColumn(name = "farm_address")//parent's foreign key
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Animal> animalList;
@@ -32,6 +39,8 @@ public class Farm {
 	// GETTER SETTER
 
 	/**
+	 * Gets the address.
+	 *
 	 * @return the address
 	 */
 	public String getAddress() {
@@ -39,6 +48,8 @@ public class Farm {
 	}
 
 	/**
+	 * Gets the farmer.
+	 *
 	 * @return the farmer
 	 */
 	public Farmer getFarmer() {
@@ -46,6 +57,8 @@ public class Farm {
 	}
 
 	/**
+	 * Gets the animals.
+	 *
 	 * @return the animals
 	 */
 	public List<Animal> getAnimals() {
@@ -53,24 +66,27 @@ public class Farm {
 	}
 
 	/**
-	 * @param address
-	 *            the address to set
+	 * Sets the address.
+	 *
+	 * @param address            the address to set
 	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
 	/**
-	 * @param farmer
-	 *            the farmer to set
+	 * Sets the farmer.
+	 *
+	 * @param farmer            the farmer to set
 	 */
 	public void setFarmer(Farmer farmer) {
 		this.farmer = farmer;
 	}
 
 	/**
-	 * @param animals
-	 *            the animals to set
+	 * Sets the animals.
+	 *
+	 * @param animals            the animals to set
 	 */
 	public void setAnimals(List<Animal> animals) {
 		this.animalList = animals;

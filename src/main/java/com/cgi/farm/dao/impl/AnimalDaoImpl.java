@@ -11,14 +11,23 @@ import com.cgi.farm.dao.IAnimalDao;
 import com.cgi.farm.model.Animal;
 
 
+/**
+ * The Class AnimalDaoImpl.
+ */
 @Repository("animalDao")
 public class AnimalDaoImpl extends IAbstractDao<Integer, Animal>implements IAnimalDao{
 
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IAnimalDao#findByID(int)
+	 */
 	public Animal findByID(int ID) {
 		return getByKey(ID);
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IAnimalDao#findAll()
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Animal> findAll(){
 		Criteria crit = createEntityCriteria();
@@ -27,6 +36,9 @@ public class AnimalDaoImpl extends IAbstractDao<Integer, Animal>implements IAnim
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see com.cgi.farm.dao.IAnimalDao#save(com.cgi.farm.model.Animal)
+	 */
 	public void save(Animal anAnimal){
 		persist(anAnimal);
 	}

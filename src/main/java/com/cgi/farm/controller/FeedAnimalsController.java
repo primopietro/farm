@@ -17,27 +17,42 @@ import com.cgi.farm.model.Food;
 import com.cgi.farm.service.IAnimalService;
 import com.cgi.farm.service.IFarmService;
 import com.cgi.farm.service.IFoodService;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class FeedAnimalsController.
+ */
 @Controller
 public class FeedAnimalsController implements java.io.Serializable {
 
+	/** The Constant serialVersionUID. */
 	//Variables 
 	private static final long serialVersionUID = 3244193094927483286L;
+	
+	/** The Constant logger. */
 	final static Logger logger = Logger.getLogger(CreateFarmController.class);
 
+	/** The farm service. */
 	@Autowired
 	IFarmService farmService;
 	
+	/** The animal service. */
 	@Autowired
 	IAnimalService animalService;
 	
+	/** The food service. */
 	@Autowired
 	IFoodService foodService;
 	
+	/** The farm to be edited. */
 	// Farm to be edited
 	Farm farmToBeEdited;
 	
 	/**
 	 * This method will provide the medium to add a new farm.
+	 *
+	 * @param model the model
+	 * @return the string
 	 */
 	@RequestMapping(value = { "/FeedAnimals" }, method = RequestMethod.GET)
 	public String GetPageFeedAnimals(ModelMap model) {
@@ -54,6 +69,11 @@ public class FeedAnimalsController implements java.io.Serializable {
 	
 	/**
 	 * This method will verify if a farmer exists.
+	 *
+	 * @param model the model
+	 * @param searchType the search type
+	 * @param searchValue the search value
+	 * @return the string
 	 */
 	@RequestMapping(value = { "/SearchFarm/{searchType}/{searchValue}" }, method = RequestMethod.GET)
 	public String searchFarm(ModelMap model, @PathVariable String searchType,
@@ -85,7 +105,8 @@ public class FeedAnimalsController implements java.io.Serializable {
 	
 	/**
 	 * This method will return the page that contains two animal tables.
-	 * 
+	 *
+	 * @param model the model
 	 * @return {@link String} the page to return
 	 */
 	@RequestMapping(value = { "/foodTables", }, method = RequestMethod.GET)
@@ -102,7 +123,8 @@ public class FeedAnimalsController implements java.io.Serializable {
 	
 	/**
 	 * This method will return the page that contains two animal tables.
-	 * 
+	 *
+	 * @param model the model
 	 * @return {@link String} the page to return
 	 */
 	@RequestMapping(value = { "/EatAllFood", }, method = RequestMethod.GET)
@@ -122,10 +144,6 @@ public class FeedAnimalsController implements java.io.Serializable {
 					for (Food aFood : anAnimal.getFoodList()) {
 						anAnimal.setfoodEated(anAnimal.getfoodEated()+aFood.getQuantity());
 						aFood.setQuantity(0);
-						
-						//UPDATE Food and animals in database
-						animalService.updateAnimal(anAnimal);
-						foodService.updateFood(aFood);
 					}
 				}
 
@@ -134,17 +152,45 @@ public class FeedAnimalsController implements java.io.Serializable {
 				model.addAttribute("hasAnimals", true);
 				
 			}
-		
-
 		}
 		
-		farmService.updateFarm(farmToBeEdited);
+	
 		model.addAttribute("farmToBeAdded", farmToBeEdited);
 		setEnvironementVariables(model);
 		logger.info("End of function eatAllFood(ModelMap model): ");
 		return "valid";
 	}
 	
+	/**
+	 * Update farm.
+	 *
+	 * @return the string
+	 */
+	@RequestMapping(value = { "/UpdateLocalFarm", }, method = RequestMethod.GET)
+	public String updateFarm(){
+		logger.info("Beginning of function  updateFarm():");
+
+		if (farmToBeEdited.getAnimals() != null) {
+			if (farmToBeEdited.getAnimals().size() > 0) {
+
+				for (Animal anAnimal : farmToBeEdited.getAnimals()) {
+					for (Food aFood : anAnimal.getFoodList()) {
+						animalService.updateAnimal(anAnimal);
+						foodService.updateFood(aFood);
+					}
+				}
+			}
+		}
+		farmService.updateFarm(farmToBeEdited);
+		logger.info("End of function updateFarm(): ");
+		return "valid";
+	}
+	
+	/**
+	 * Sets the environement variables.
+	 *
+	 * @param model the new environement variables
+	 */
 	public void setEnvironementVariables(ModelMap model){
 		model.addAttribute("hasAnimals", false);
 		HashMap<String, Integer> foodTotals = new HashMap<>();

@@ -25,38 +25,58 @@ import com.cgi.farm.service.IFarmerService;
 import com.cgi.farm.service.IFoodService;
 import com.cgi.farm.service.IFoodTypeService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CreateFarmController.
+ */
 @Controller
 public class CreateFarmController implements java.io.Serializable {
+	
+	/** The Constant serialVersionUID. */
 	// Variables
 	private static final long serialVersionUID = 3244193094927483286L;
+	
+	/** The Constant logger. */
 	final static Logger logger = Logger.getLogger(CreateFarmController.class);
 
+	/** The farmer service. */
 	@Autowired
 	IFarmerService farmerService;
 
+	/** The farm service. */
 	@Autowired
 	IFarmService farmService;
 
+	/** The animal service. */
 	@Autowired
 	IAnimalService animalService;
 
+	/** The food service. */
 	@Autowired
 	IFoodService foodService;
 
+	/** The animal type service. */
 	@Autowired
 	IAnimalTypeService animalTypeService;
 
+	/** The food type service. */
 	@Autowired
 	IFoodTypeService foodTypeService;
 
+	/** The farm to be added. */
 	// Farm to be created
 	Farm farmToBeAdded;
+	
+	/** The last animal ID. */
 	static int lastAnimalID = 0;
+	
+	/** The last food ID. */
 	static int lastFoodID = 0;
 
 	/**
 	 * This method will return the page that contains two animal tables.
-	 * 
+	 *
+	 * @param model the model
 	 * @return {@link String} the page to return
 	 */
 	@RequestMapping(value = { "/animalTables", }, method = RequestMethod.GET)
@@ -103,7 +123,9 @@ public class CreateFarmController implements java.io.Serializable {
 	}
 
 	/**
-	 * This method will provide the medium to add a new farm.
+	 * This method will provide the medium to save a new farm.
+	 *
+	 * @return the string
 	 */
 	@RequestMapping(value = { "/SaveFarm" }, method = RequestMethod.GET)
 	public String saveFarm() {
@@ -115,7 +137,10 @@ public class CreateFarmController implements java.io.Serializable {
 	}
 
 	/**
-	 * This method will provide the medium to add a new farm.
+	 * This method will provide the medium to create a new farm.
+	 *
+	 * @param model the model
+	 * @return the string
 	 */
 	@RequestMapping(value = { "/CreateFarm" }, method = RequestMethod.GET)
 	public String newFarm(ModelMap model) {
@@ -151,6 +176,10 @@ public class CreateFarmController implements java.io.Serializable {
 
 	/**
 	 * This method will verify if a farm exists.
+	 *
+	 * @param model the model
+	 * @param testAddress the test address
+	 * @return the string
 	 */
 	@RequestMapping(value = { "/VerifyFarmAdress/{testAddress}" }, method = RequestMethod.GET)
 	public String verifyFarmAdress(ModelMap model,
@@ -179,6 +208,11 @@ public class CreateFarmController implements java.io.Serializable {
 
 	/**
 	 * This method will verify if a farmer exists.
+	 *
+	 * @param model the model
+	 * @param farmerName the farmer name
+	 * @param farmerAge the farmer age
+	 * @return the string
 	 */
 	@RequestMapping(value = { "/VerifyFarmer/{farmerName}/{farmerAge}" }, method = RequestMethod.GET)
 	public String verifyFarmer(ModelMap model, @PathVariable String farmerName,
@@ -209,7 +243,13 @@ public class CreateFarmController implements java.io.Serializable {
 	}
 
 	/**
-	 * This method will add food to a farm
+	 * This method will add food to a farm.
+	 *
+	 * @param model the model
+	 * @param animalType the animal type
+	 * @param foodType the food type
+	 * @param quantity the quantity
+	 * @return the string
 	 */
 	@RequestMapping(value = { "/AddFoodAnimal/{animalType}/{foodType}/{quantity}" }, method = RequestMethod.GET)
 	public String AddFoodAnimal(ModelMap model,

@@ -4,12 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+
+/**
+ * The Class FoodType.
+ */
 @Entity
 @Table(name = "food_type")
 public class FoodType {
+	
+	/** The name. */
 	@Id
 	@Column(name = "name", nullable = false)
 	private String name;
+	
+	/** The nutritional value. */
 	@Column(name = "nutritionalValue", nullable = false)
 	private String nutritionalValue;
 
@@ -17,6 +26,8 @@ public class FoodType {
 	
 	// GETTER SETTER
 	/**
+	 * Gets the name.
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -24,6 +35,8 @@ public class FoodType {
 	}
 
 	/**
+	 * Gets the nutritional value.
+	 *
 	 * @return the nutritionalValue
 	 */
 	public String getNutritionalValue() {
@@ -31,16 +44,18 @@ public class FoodType {
 	}
 
 	/**
-	 * @param name
-	 *            the name to set
+	 * Sets the name.
+	 *
+	 * @param name            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @param nutritionalValue
-	 *            the nutritionalValue to set
+	 * Sets the nutritional value.
+	 *
+	 * @param nutritionalValue            the nutritionalValue to set
 	 */
 	public void setNutritionalValue(String nutritionalValue) {
 		this.nutritionalValue = nutritionalValue;

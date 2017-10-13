@@ -30,7 +30,7 @@ body, .form-control{
   background-color: #EAE7E7;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 0 30px black;
+  box-shadow: 0 0 30px rgba(0,0,0,0.2);
   margin:auto;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -38,7 +38,7 @@ body, .form-control{
   transition:all 0.5s linear;
 }
 .generic-container:hover {
-    box-shadow: 5px 5px 50px black;
+    box-shadow: 5px 5px 50px rgba(0,0,0,0.4);
 }
 
 .lead button{
